@@ -1,4 +1,7 @@
 .main {
 	--bg-color: #ffffff;
-	background-color: var(--bg-color, #ffffff); /* #ffffff если --bg-color не определена */
+	background-color: var(
+		--bg-color,
+		#ffffff
+	); /* #ffffff если --bg-color не определена */
 }

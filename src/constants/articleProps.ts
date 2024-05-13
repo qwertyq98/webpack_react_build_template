@@ -27,7 +27,7 @@ export const fontColors: OptionType[] = [
 		value: '#000000',
 		className: 'font-black',
 		optionClassName: 'option-black',
-	}
+	},
 ];
 
 export const backgroundColors: OptionType[] = [
@@ -36,7 +36,7 @@ export const backgroundColors: OptionType[] = [
 		value: '#FFFFFF',
 		className: 'bg-white',
 		optionClassName: 'option-white',
-	}
+	},
 ];
 
 export const contentWidthArr: OptionType[] = [
@@ -45,11 +45,11 @@ export const contentWidthArr: OptionType[] = [
 		value: '1394px',
 		className: 'width-wide',
 		optionClassName: 'option-wide',
-	}
+	},
 ];
 
 export const fontSizeOptions: OptionType[] = [
-	{ title: '18px', value: '18px', className: 'font-size-18' }
+	{ title: '18px', value: '18px', className: 'font-size-18' },
 ];
 
 export const defaultArticleState = {

@@ -22,7 +22,8 @@ const App = () => {
 					'--container-width': defaultArticleState.contentWidth.value,
 					'--bg-color': defaultArticleState.backgroundColor.value,
 				} as CSSProperties
-			}>SSSS
+			}>
+			SSSS
 		</div>
 	);
 };
