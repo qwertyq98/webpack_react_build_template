@@ -145,6 +145,61 @@ plugins: [
 
 `npm install -D @pmmmwh/react-refresh-webpack-plugin react-refresh` - чтобы React не сбрасывал свои состояния при сохранении файлов
 
+## Добавление stylelint, eslint и prettier
+
+```javascript
+npm install -D eslint prettier eslint-config-prettier eslint-plugin-eslint-comments eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks
+npm install -D @typescript-eslint/parser @typescript-eslint/eslint-plugin
+npm install -D stylelint stylelint-config-standard stylelint-order
+```
+
+- Конфиг для stylelint `.stylelintignore`
+- Конфиг для eslintrc `.eslintrc.js`
+- Конфиг для prettier `.prettierrc.js`
+
+Настройка скриптов: 
+
+```javascript
+//package.json
+"scripts": {
+        "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.js --env env=prod",
+    "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
+    "stylelint": "stylelint \"src/**/*.{css,scss}\"",
+    "stylelint:fix": "stylelint \"src/**/*.{css,scss}\" --fix",
+    "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\" --ignore-path ./.prettierignore",
+    "check": "npm run stylelint:fix && npm run lint && npm run format"
+},
+```
+
+## Автоматизация процесса проверки кода
+
+```javascript
+npm install -D husky
+npm install -D lint-staged
+```
+
+Для инициализации husky добавим в блок scripts файла package.json новую запись: 
+`prepare": "husky install`
+
+Далее `npm run prepare`
+
+Для создания `pre-commit` хука с использованием Husky в папке `.husky` потребуется в папке `.husky` создать файл `pre-commit` без расширения.
+
+```javascript
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+npx lint-staged 
+```
+в package.json добавить:
+```javascript
+"lint-staged": {
+        "*.{css,scss}": "npm run stylelint:fix",
+        "*.{js,jsx,ts,tsx}": "npm run lint",
+        "*.{js,jsx,ts,tsx,json,css,scss,md}": "npm run format"
+    }, 
+```
+
 ## Команды сборки и запуска
 
 - `npm run build` - запуск сборки
